@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Tegarr123/PSO-kelompok7-GymManagementSystem.git
+    repoURL: https://github.com/Tegarr123/GymManagementSystem-GitOps.git
     targetRevision: HEAD
     path: dev
   destination: 
