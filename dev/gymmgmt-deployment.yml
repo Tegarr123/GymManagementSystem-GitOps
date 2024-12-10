@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gymmgmt-deployment
+  labels:
+    app: gymmgmt
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gymmgmt
+  template:
+    metadata:
+      labels:
+        app: gymmgmt
+    spec:
+      containers:
+        - name: gym-management-app
+          image: fadhinotgr/gym-management-system-app:latest
+          imagePullPolicy: Always
+          command: ["python"]
+          args: ["app.py"]
+          ports:
+            - containerPort: 5000
+          env:
+            - name: db_root_password
+              valueFrom:
+                secretKeyRef:
+                  name: gymmgmt-secrets
+                  key: db_root_password
+            - name: db_name
+              value: gym
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gymmgmt-service
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: gymmgmt
+  type: LoadBalancer
