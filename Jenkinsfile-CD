@@ -22,7 +22,7 @@ pipeline{
             steps {
                 sh """
                     cat dev/gymmgmt-deployment.yml
-                    sed -i 's/${USERNAME}.*/${IMAGE_NAME}:${IMAGE_TAG}/g' dev/gymmgmt-deployment.yml
+                    sed -i 's/${USERNAME}.*/${USERNAME}\/${IMAGE_NAME}:${IMAGE_TAG}/g' dev/gymmgmt-deployment.yml
                     cat dev/gymmgmt-deployment.yml
                 """
             }
