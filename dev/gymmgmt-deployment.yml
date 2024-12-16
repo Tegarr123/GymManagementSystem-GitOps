@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: gym-management-app
-          image: fadhinotgr/gym-management-system-app:11
+          image: fadhinotgr/gym-management-system-app:12
           imagePullPolicy: Always
           command: ["python"]
           args: ["app.py"]
